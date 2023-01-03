@@ -18,3 +18,4 @@ export const malagaConfig: Network = {
   feeToken: "umlg",
   faucetUrl: "https://faucet.malaga-420.cosmwasm.com/",
 };
+// Malaga testnet is a Cosmos Hub testnet, so we can use this custom config
