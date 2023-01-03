@@ -41,20 +41,24 @@ export default function Home() {
     setRecipient(event.target.value);
   };
 
-  const { getCosmWasmClient, address } = useWallet();
+const walletManager = useWallet();
+const { getSigningStargateClient, getSigningCosmWasmClient, address } =
+  walletManager;
 
-  // cw20Client (refer to useTokenBalance.ts for context)
-  useEffect(() => {
-    getCosmWasmClient().then((cosmWasmClient) => {
-      if (!cosmWasmClient) {
-        console.error("No CosmWasmClient found");
-        return;
-      }
-      // using normal Cw20Client instead of Cw20QueryClient, also uses diff arguments
-      const newClient = new Cw20Client(cosmWasmClient, address, cw20ContractAddress); 
-      setCw20Client(newClient);
-    });
-  }, [address, getCosmWasmClient]);
+useEffect(() => {
+  getSigningCosmWasmClient().then((cosmWasmClient) => {
+    if (!cosmWasmClient || !address) {
+      console.error('No cosmwasm client or address');
+      return;
+    }
+    const newClient = new Cw20Client(
+      cosmWasmClient,
+      address,
+      cw20ContractAddress
+    );
+    setCw20Client(newClient);
+  });
+}, [address, getSigningCosmWasmClient]);
 
   const handleSend = async () => {
     if (!cw20Client) {
@@ -63,7 +67,7 @@ export default function Home() {
     }
 
     if (!amount || !recipient) {
-      console.error('Please enter an amount and a recipient');
+      console.error('Please enter an amount or recipient');
       return;
     }
 

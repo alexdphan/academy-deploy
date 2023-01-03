@@ -256,6 +256,9 @@ export interface Cw20Interface extends Cw20ReadOnlyInterface {
   uploadLogo: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }
 export class Cw20Client extends Cw20QueryClient implements Cw20Interface {
+  static transfer(arg0: { amount: string; recipient: string; }) {
+    throw new Error('Method not implemented.');
+  }
   client: SigningCosmWasmClient;
   sender: string;
   contractAddress: string;
