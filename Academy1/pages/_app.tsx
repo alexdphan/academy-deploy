@@ -53,3 +53,5 @@ export default CreateCosmosApp;
 //   | undefined {
 //   throw new Error('Function not implemented.');
 // }
+
+// LCD not connecting correctly
