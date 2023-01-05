@@ -72,6 +72,7 @@ useEffect(() => {
     }
 
     const result = await cw20Client.transfer({ amount, recipient });
+    // the fee here would be 0.0025 umlga, which is the default gas price
 
     console.log('Result of transfer: ', result);
 
@@ -164,3 +165,24 @@ useEffect(() => {
     </Container>
   );
 }
+
+// Result of transfer // 
+// "root":{ 5 items
+// "@type":string"/cosmwasm.wasm.v1.MsgExecuteContract"
+// "sender":string"wasm14emfn5eeqmumh5vq0yw7jt8556kz3r34j22u3r"
+// "contract":string"wasm1ea72ykc8wlnpqjtt5d4ldd8jsqvhcs6y8rrdfwzvm5eru0wncnxs5ytzxm"
+// "msg":{1 item
+// "transfer":{2 items
+// "amount":string"5"
+// "recipient":string"wasm1lzgzypfwy5t94l2nlvh9h8njuwmy0fyhpufltw"
+// }
+// }
+// "funds":[]0 items
+// }
+
+// Your token balance is: 123455999995 Tokens
+
+// wasm1lzgzypfwy5t94l2nlvh9h8njuwmy0fyhpufltw
+// 5
+// 6C6509A7CA4A998F0BAC9536D53E26DF3C217CBF12D8275A9FFD8424F97072D
+// https://block-explorer.malaga-420.cosmwasm.com/transactions/6C6509A7CA4A998F0BAC9536D53E26DF3C217CBF12D8275A9FFD8424F97072D8
